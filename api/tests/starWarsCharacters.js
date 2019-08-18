@@ -1,0 +1,42 @@
+/* eslint-disable handle-callback-err */
+const chai = require('chai')
+const chaiHttp = require('chai-http')
+const app = require('../app')
+
+// start server before tests begin
+before(done => {
+  app.listen(3001, done)
+})
+// Configure chai
+chai.use(chaiHttp)
+chai.should()
+describe('starWarsCharacters', () => {
+  describe('GET /{id}', () => {
+    it('should get a single record', (done) => {
+      chai.request(app)
+        .get('/star-wars-characters/1')
+        .end((err, res) => {
+          res.should.have.status(200)
+          res.body.should.be.a('object')
+          done()
+        })
+    })
+    it('should return 422 http status if the request is malformed', (done) => {
+      chai.request(app)
+        .get('/star-wars-characters/1.1')
+        .end((err, res) => {
+          res.should.have.status(422)
+          done()
+        })
+    })
+    // TODO: fix when dummy data isn't used for the response
+    it('should return 500 http status if the response is malformed', (done) => {
+      chai.request(app)
+        .get('/star-wars-characters/1')
+        .end((err, res) => {
+          res.should.have.status(500)
+          done()
+        })
+    })
+  })
+})
