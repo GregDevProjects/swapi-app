@@ -1,4 +1,4 @@
-var assert = require('assert')
+const assert = require('assert')
 const { personRequestUrl, PERSON_URL, formatStarWarsCharacter, requestSwapiResources } = require('../helpers')
 const swapiResources = require('./data/swapiResources')
 const swapiResourcesFormatted = require('./data/swapiResourcesFormatted')
