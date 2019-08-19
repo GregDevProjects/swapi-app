@@ -13,7 +13,9 @@
     "http-errors": "~1.6.3",
     "joi": "^14.3.1",
     "morgan": "~1.9.1",
-    "node-dev": "^4.0.0"
+    "node-dev": "^4.0.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -23,6 +25,8 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "mocha": "^6.2.0"
+    "eslint-plugin-standard": "^4.0.0",
+    "mocha": "^6.2.0",
+    "nock": "^10.0.6"
   }
 }

@@ -17,18 +17,18 @@ const responseSchema = Joi.object().keys({
     terrain: Joi.string().required(),
     population: Joi.number().required()
   }).required(),
-  species: Joi.object().keys({
+  species: Joi.array().items(Joi.object().keys({
     name: Joi.string().required(),
-    averageLifespan: Joi.number().required(),
+    averageLifespan: Joi.alternatives(Joi.number(), Joi.string()).required(),
     classification: Joi.string().required(),
     language: Joi.string().required()
-  }).required(),
+  }).required()).required(),
   films: Joi.array().items(Joi.object().keys({
     title: Joi.string().required(),
     director: Joi.string().required(),
     producers: Joi.array().items(Joi.string().required()),
     date: Joi.date().required()
-  })).required()
+  }).required()).required()
 })
 
 module.exports = {
