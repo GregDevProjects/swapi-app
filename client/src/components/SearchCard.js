@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -35,6 +35,15 @@ const SearchCard = (props) => {
   const classes = useStyles();
   const { onSearch } = props;
   const textInput = React.createRef();
+  const [valid, setValid] = useState(false);
+  const validate = (event) => {
+    const input = event.target.value;
+    if (Number.isNaN(input) || input < 1) {
+      setValid(false);
+      return;
+    }
+    setValid(true);
+  };
 
   return (
     <Card className={classes.card}>
@@ -50,8 +59,9 @@ const SearchCard = (props) => {
           inputProps={{ min: '1' }}
           className={classes.input}
           inputRef={textInput}
+          onChange={validate}
         />
-        <Button className={classes.button} variant="contained" color="primary" onClick={() => onSearch(textInput.current.value)}>
+        <Button disabled={!valid} className={classes.button} variant="contained" color="primary" onClick={() => onSearch(textInput.current.value)}>
         Search by id
         </Button>
       </CardContent>
