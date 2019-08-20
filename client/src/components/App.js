@@ -25,18 +25,33 @@ const useStyles = makeStyles({
 
 function App() {
   const [starWarsCharacter, setStarWarsCharacter] = useState(false);
+  const [errorCode, setErrorCode] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const classes = useStyles();
 
   const getStarWarsCharacter = (id) => {
     fetch(`${process.env.REACT_APP_BASE_URL}star-wars-characters/${id}`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        }
+        if (res.status === 404) {
+          setErrorCode(404);
+          return false;
+        }
+        if (res.status === 503) {
+          setErrorCode(503);
+          return false;
+        }
+        setErrorCode(500);
+        return false;
+      })
       .then(
         (result) => {
           setStarWarsCharacter(result);
         },
         (error) => {
-          console.warn(error);
+          setErrorCode(500);
         },
       );
   };
@@ -49,6 +64,7 @@ function App() {
   const handleModalClose = () => {
     setModalOpen(false);
     setStarWarsCharacter(false);
+    setErrorCode(false);
   };
 
   return (
@@ -57,7 +73,8 @@ function App() {
       <CharacterDetailModal
         onClose={handleModalClose}
         open={modalOpen}
-        starWarsCharacterData={starWarsCharacter}
+        starWarsCharacter={starWarsCharacter}
+        errorCode={errorCode}
       />
       <div className={classes.title}>
         <Typography gutterBottom align="center" variant="h3">Star Picker</Typography>
