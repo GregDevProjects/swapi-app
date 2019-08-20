@@ -50,7 +50,7 @@ function App() {
         (result) => {
           setStarWarsCharacter(result);
         },
-        (error) => {
+        () => {
           setErrorCode(500);
         },
       );
