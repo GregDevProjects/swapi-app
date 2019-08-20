@@ -26,8 +26,8 @@ const responseSchema = Joi.object().keys({
   films: Joi.array().items(Joi.object().keys({
     title: Joi.string().required(),
     director: Joi.string().required(),
-    producers: Joi.array().items(Joi.string().required()),
-    date: Joi.date().required()
+    producers: Joi.string().required(),
+    date: Joi.string().required()
   }).required()).required()
 })
 

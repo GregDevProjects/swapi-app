@@ -49,7 +49,7 @@ const formatStarWarsCharacter = swapiResources => {
     return {
       title: film.title,
       director: film.director,
-      producers: commaStringToArray(film.producer),
+      producers: film.producer,
       date: film.release_date
     }
   }
