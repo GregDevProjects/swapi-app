@@ -1,10 +1,12 @@
 const createError = require('http-errors')
 const express = require('express')
 const logger = require('morgan')
-
+const cors = require('cors')
 const starWarsCharactersRouter = require('./routes/starWarsCharacters')
 
 const app = express()
+
+app.use(cors())
 app.use(logger('dev'))
 app.use('/star-wars-characters', starWarsCharactersRouter)
 
