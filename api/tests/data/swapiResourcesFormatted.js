@@ -27,47 +27,31 @@ const swapiResourcesFormatted = {
     {
       title: 'The Empire Strikes Back',
       director: 'Irvin Kershner',
-      producers: [
-        'GaryKurtz',
-        'RickMcCallum'
-      ],
+      producers: 'Gary Kurtz, Rick McCallum',
       date: '1980-05-17'
     },
     {
       title: 'Revenge of the Sith',
       director: 'George Lucas',
-      producers: [
-        'RickMcCallum'
-      ],
+      producers: 'Rick McCallum',
       date: '2005-05-19'
     },
     {
       title: 'Return of the Jedi',
       director: 'Richard Marquand',
-      producers: [
-        'HowardG.Kazanjian',
-        'GeorgeLucas',
-        'RickMcCallum'
-      ],
+      producers: 'Howard G. Kazanjian, George Lucas, Rick McCallum',
       date: '1983-05-25'
     },
     {
       title: 'A New Hope',
       director: 'George Lucas',
-      producers: [
-        'GaryKurtz',
-        'RickMcCallum'
-      ],
+      producers: 'Gary Kurtz, Rick McCallum',
       date: '1977-05-25'
     },
     {
       title: 'The Force Awakens',
       director: 'J. J. Abrams',
-      producers: [
-        'KathleenKennedy',
-        'J.J.Abrams',
-        'BryanBurk'
-      ],
+      producers: 'Kathleen Kennedy, J. J. Abrams, Bryan Burk',
       date: '2015-12-11'
     }
   ]
