@@ -7,7 +7,7 @@ const requestSchema = Joi.object().keys({
 const responseSchema = Joi.object().keys({
   name: Joi.string().required(),
   height: Joi.number().required(),
-  mass: Joi.number().required(),
+  mass: Joi.alternatives(Joi.number(), Joi.string()).required(),
   hairColor: Joi.string().required(),
   skinColor: Joi.string().required(),
   gender: Joi.string().required(),
@@ -15,7 +15,7 @@ const responseSchema = Joi.object().keys({
   homePlanet: Joi.object().keys({
     title: Joi.string().required(),
     terrain: Joi.string().required(),
-    population: Joi.number().required()
+    population: Joi.alternatives(Joi.number(), Joi.string()).required()
   }).required(),
   species: Joi.array().items(Joi.object().keys({
     name: Joi.string().required(),
